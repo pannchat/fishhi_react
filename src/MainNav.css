@@ -1,0 +1,32 @@
+/* html,body{
+    margin:0px;
+    padding:0px;
+} */
+.main-nav{
+    display:flex;
+    justify-content: space-between;
+    width:100%;
+    color:#6E7881;
+    margin:10px 0;
+}
+.nav-icons{
+    width:30px;
+    height:30px;
+    width:30px;
+    position: relative;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+}
+.main-nav-iconbox{
+    border-radius: 10px;
+    width:60px;
+    height: 60px;
+    background-color: #e4e8c6;
+     margin:10px 0px;
+}
+div + span{
+    font-size:14px;
+    color:#7c838a;
+
+}

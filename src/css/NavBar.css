@@ -1,0 +1,28 @@
+.nav-top{
+    margin: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+input{
+    width:100%;
+    border:none;
+    height:30px;
+}
+.test{
+    display:flex;
+    width:100%;
+    justify-content:'center';
+    align-items:center;
+}
+.search-btn{
+    padding:16px;
+
+}
+.slide-pane_from_bottom {
+    height: 100vh;
+    margin-top: 0vh;
+    transform: translateY(100%);
+  }
+  .slide-pane__title-wrapper{
+    margin-left:0px;
+}

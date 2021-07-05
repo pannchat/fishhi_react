@@ -1,24 +1,25 @@
+import React, {useEffect} from 'react'
 import logo from './logo.svg';
 import './App.css';
-
+import MainNav from './MainNav'
+import NavBar from './NavBar';
+import Feed from './Feed'
+import Login from './Login'
+import axios from 'axios';
 function App() {
+
+  const imgs = {
+    width:'100%',
+    height:"200px",
+    objectFit:'cover',
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <Login/> */}
+      <NavBar/>
+      <MainNav/>
+      <Feed/>
+    </>
   );
 }
 

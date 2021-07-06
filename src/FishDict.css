@@ -1,0 +1,12 @@
+.breeding-env-box{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.breeding-evn-box__property{
+    margin-top:70px;
+}
+.breeding-evn-box__value{
+    font-weight: bold;
+    font-size:24px;
+}

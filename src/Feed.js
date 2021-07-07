@@ -52,7 +52,7 @@ function Post(){
             <div className="card-caption">
                 <ProfileImg src="https://cdn.pixabay.com/photo/2015/01/08/18/29/entrepreneur-593358_960_720.jpg"/>
                 <PostTitle>#미니어항 블라블라블라블라블라블라</PostTitle>
-            <PostBy>Post By.<br/>박지원숭이</PostBy>
+            <PostBy>Post By.<br/>씨알이</PostBy>
             </div>
         </PostCard>
         <PostCard>
@@ -60,7 +60,7 @@ function Post(){
             <div className="card-caption">
                 <ProfileImg src="https://cdn.pixabay.com/photo/2015/01/08/18/29/entrepreneur-593358_960_720.jpg"/>
                 <PostTitle>#미니어항 블라블라블라블라블라블라</PostTitle>
-            <PostBy>Post By.<br/>박지원숭이</PostBy>
+            <PostBy>Post By.<br/>씨알이</PostBy>
             </div>
         </PostCard>
         </>

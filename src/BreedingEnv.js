@@ -21,6 +21,8 @@ let BreedingEnvValue = styled.div`
     font-weight: bold;
     font-size:24px;
 `;
+
+
 const BreedingEnv = ({icon, property, params1, params2}) =>{
     return(
         <BreedingEnvBox>

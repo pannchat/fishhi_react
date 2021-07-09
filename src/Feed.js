@@ -4,8 +4,6 @@ import './Feed.css';
 import UserImg from './img/file/user.jpeg';
 let PostCard = styled.div`
     width:90%;
-    
-
     margin:10px;
     border-radius:5px;
     border: 1px solid #ECECEC;

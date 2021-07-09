@@ -9,6 +9,7 @@ import Login from './Login'
 import axios from 'axios';
 import FishDict from './FishDict';
 import Home from './Home';
+import MyPage from './MyPage';
 function App() {
 
   const imgs = {
@@ -23,6 +24,7 @@ function App() {
           <Route exact path={'/'} component={Home} />
           <Route path={'/login'} component={Login} />
           <Route path={'/fish/:fid'} component={FishDict} />
+          <Route path={'/mypage'} component={MyPage} />
         </Switch>
       </BrowserRouter>
       {/* <Login/> */}

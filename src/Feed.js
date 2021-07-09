@@ -66,7 +66,7 @@ function Post(){
         <PostCard>
             <img style={thumbnail} src="/img/file/thumb.jpeg"/>
             <div className="card-caption">
-            <ProfileContainer><ProfileImg src={UserImg}/></ProfileContainer>
+            <ProfileContainer><ProfileImg src={UserImg} alt='user profile'/></ProfileContainer>
                 <PostTitle>#미니어항 블라블라블라블라블라블라</PostTitle>
             <PostBy>Post By.<br/>씨알이</PostBy>
             </div>

@@ -10,6 +10,7 @@ import axios from 'axios';
 import FishDict from './FishDict';
 import Home from './Home';
 import MyPage from './MyPage';
+import FishtankCalc from './FishtankCalc';
 function App() {
 
   const imgs = {
@@ -25,10 +26,11 @@ function App() {
           <Route path={'/login'} component={Login} />
           <Route path={'/fish/:fid'} component={FishDict} />
           <Route path={'/mypage'} component={MyPage} />
+          <Route path={'/calc'} component={FishtankCalc} />
         </Switch>
       </BrowserRouter>
       {/* <Login/> */}
-      {/* <FishDict/> */}
+      {/* <FishtankCalc/> */}
 
     </>
   );

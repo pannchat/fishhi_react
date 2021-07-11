@@ -11,9 +11,27 @@
     font-family:Y_Spotlight;
     font-size:1.5rem;
 }
-#main-section{
+.main-section{
     display:flex;
     justify-content: center;
+    &__tank-preview{
+        display:flex;
+        /* position: fixed; */
+        /* top:30%; */
+        flex-direction: column;
+        align-items:center;
+        width:300px;
+        margin-bottom: auto;
+    
+    }
+    &__tank-container{
+        perspective: 1000px;
+        width:200px;
+        height:250px;
+        margin-top:30px;
+        display:flex;
+        justify-content: center;
+    }
 }
 .flex-box{
     display:flex;

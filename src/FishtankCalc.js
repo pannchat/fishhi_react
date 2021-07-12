@@ -4,7 +4,7 @@ import NavBar from './NavBar';
 import styled from 'styled-components';
 const FishtankCalc = () => {
     const [tankWidth, setTankWidth] = useState(0);
-
+    const [capacity, setCapacity] = useState('내 수조의 용량을 계산해보세요.');
     let TankInput = styled.input`
         width:70px;
         border: solid 1px #8c98a4;
@@ -13,10 +13,11 @@ const FishtankCalc = () => {
 
     return(
     <>
-        <NavBar />
+        {/* <NavBar /> */}
         <header className="header">
             dosage calculator
         </header>
+        <input placeholder="test"/>
         <section className="main-section">
             <div className="flex-box--main">
                 <div className="main-section__tank-preview">
@@ -38,8 +39,20 @@ const FishtankCalc = () => {
                     <div className="main-section__detailed">
                         <TankInput type="number" placeholder="유리두께"/>
                         <TankInput type="number" placeholder="바닥재"/>
-                        <TankInput placeholder="만수위까지"/>
-                        <input placeholder="만수위까지"/>
+                        <TankInput type="number" placeholder="만수위까지"/>
+                    </div>
+                    <div className="flex-box">
+                        <span>상세 설정</span>
+                        <label className="switch-button">상세설정 Toggle
+                        <input type="checkbox" id="checkbox"/>
+                        <span className="onoff-switch"></span>
+                        </label>
+                    </div>
+                    <div className="flex-box--func">
+                        <input type="button" value="계산"/>
+                    </div>
+                    <div className="main-secion__calc-capacity">
+                        {capacity}
                     </div>
                 </div>
             </div>

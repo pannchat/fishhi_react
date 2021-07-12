@@ -3,13 +3,13 @@ import './css/Login.css';
 function Form(){
     return(
         <div className="login-form">
-            <div className="input-box">
-                <input type="text" name="username" placeholder="아이디"/>
-                <label>아이디</label>
+            <div className="login-form__box">
+                <input className="login-form__input" type="text" name="username" placeholder="아이디"/>
+                <label className="login-form__label">아이디</label>
             </div>
-            <div className="input-box">
-                <input type="password" name="password" placeholder="비밀번호"/>
-                <label>비밀번호</label>
+            <div className="login-form__box">
+                <input className="login-form__input" type="password" name="password" placeholder="비밀번호"/>
+                <label className="login-form__label">비밀번호</label>
             </div>
         </div>
     )
@@ -26,7 +26,7 @@ function Login(){
             <h2>Login</h2>
         </header>
         <Form />
-        <input type="submit" value="로그인"/>
+        <input className="login-btn" type="submit" value="로그인"/>
         </div>
     )
 }

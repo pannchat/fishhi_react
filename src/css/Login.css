@@ -5,11 +5,11 @@ header{
 form{
     padding:10px;
 }
-.input-box{
+.login-form__box{
     position:relative;
     margin:10px 0;
 }
-.input-box > input{
+.login-form__input{
     background:transparent;
     border:none;
     border-bottom: solid 1px #ccc;
@@ -17,16 +17,16 @@ form{
     font-size:14pt;
     width:100%;
 }
-input::placeholder{
+.login-form__input::placeholder{
     color:transparent;
 }
-input:placeholder-shown + label{
+.login-form__input:placeholder-shown + .login-form__label{
     color:#aaa;
     font-size:14pt;
     top:15px;
 
 }
-input:focus + label, label{
+.login-form__input:focus + .login-form__label, .login-form__label{
     color:#8aa1a1;
     font-size:10pt;
     pointer-events: none;
@@ -39,11 +39,11 @@ input:focus + label, label{
     -o-transition: all 0.2s ease;
 }
 
-input:focus, input:not(:placeholder-shown){
+.login-form__input:focus, .login-form__input:not(:placeholder-shown){
     border-bottom: solid 1px #8aa1a1;
     outline:none;
 }
-input[type=submit]{
+.login-btn{
     background-color: #8aa1a1;
     border:none;
     color:white;

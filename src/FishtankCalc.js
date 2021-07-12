@@ -1,7 +1,16 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './FishtankCalc.scss';
 import NavBar from './NavBar';
+import styled from 'styled-components';
 const FishtankCalc = () => {
+    const [tankWidth, setTankWidth] = useState(0);
+
+    let TankInput = styled.input`
+        width:70px;
+        border: solid 1px #8c98a4;
+        text-align: center;
+    `;
+
     return(
     <>
         <NavBar />
@@ -11,15 +20,21 @@ const FishtankCalc = () => {
         <section className="main-section">
             <div className="flex-box--main">
                 <div className="main-section__tank-preview">
-                    <div className="main_section__tank-container">
-                        <div className="main_section__tank">
-                        <div className="face" id="front"><b>fishhi.kr</b></div>
-                        <div className="face" id="back"></div>
-                        <div className="face" id="left"></div>
-                        <div className="face" id="right"></div>
-                        <div className="face" id="top"></div>
-                        <div className="face" id="bottom"></div>
+                    <div className="main-section__tank-container">
+                        <div className="main-section__tank">
+                            <div className="face" id="front"><b>fishhi.kr</b></div>
+                            <div className="face" id="back"></div>
+                            <div className="face" id="left"></div>
+                            <div className="face" id="right"></div>
+                            <div className="face" id="top"></div>
+                            <div className="face" id="bottom"></div>
                         </div>
+                    </div>
+                    <div className="main-section__tank-size">
+                        <TankInput type="number" placeholder="가로"/>
+                        <TankInput type="number" placeholder="세로"/>
+                        <TankInput type="number" placeholder="높이"/>
+                        
                     </div>
                 </div>
             </div>

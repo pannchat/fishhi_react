@@ -34,7 +34,12 @@ const FishtankCalc = () => {
                         <TankInput type="number" placeholder="가로"/>
                         <TankInput type="number" placeholder="세로"/>
                         <TankInput type="number" placeholder="높이"/>
-                        
+                    </div>
+                    <div className="main-section__detailed">
+                        <TankInput type="number" placeholder="유리두께"/>
+                        <TankInput type="number" placeholder="바닥재"/>
+                        <TankInput placeholder="만수위까지"/>
+                        <input placeholder="만수위까지"/>
                     </div>
                 </div>
             </div>

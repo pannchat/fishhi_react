@@ -8,7 +8,7 @@ import goBackIcon from './img/icons/back.svg'
 import styled from 'styled-components';
 // import Back from './img/icons/back.svg'
 import './css/NavBar.css'
-import axios from 'axios'
+// import axios from 'axios'
 import { useHistory } from 'react-router';
 
 let SearchBtn = styled.img`
@@ -53,7 +53,7 @@ function NavBar({showBackBtn=true}){
       useEffect(()=>{
         const loadUsers = async () =>{
 
-          const response = await axios.get('https://reqres.in/api/users');
+          // const response = await axios.get('https://reqres.in/api/users');
           setData(test.data);
         }
         loadUsers();

@@ -47,8 +47,17 @@
         font-size:1.5rem;
         margin: 10px 0;
     }
+    &__icons{
+        width:20px;
+        height:20px;
+    }
 }
-
+#clipboard{
+    margin-left:10px;background-color:#939393;width:30px;height:30px;position:relative
+}
+#clipboard > img{
+    position:absolute;width:20px;left:50%;top:50%;transform:translate(-50%,-50%)
+}
 
 @keyframes spin {
     100% {

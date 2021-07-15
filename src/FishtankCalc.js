@@ -2,6 +2,8 @@ import React,{useState} from 'react';
 import './FishtankCalc.scss';
 import NavBar from './NavBar';
 import styled from 'styled-components';
+
+import ClipboardIcon from './img/icons/clipboard.svg';
 const FishtankCalc = () => {
     const [tankWidth, setTankWidth] = useState(0);
     const [capacity, setCapacity] = useState('내 수조의 용량을 계산해보세요.');
@@ -63,8 +65,8 @@ const FishtankCalc = () => {
                     <div className="flex-box--func">
                         <input id="calc-btn" type="button" value="계산"/>
                         <div id="clipboard">
-                        <img src="./icons/clipboard.svg" alt="복사 버튼"/>
-                        <div data-tooltip-text='링크가 복사되었습니다.' id="tooltip"></div>
+                            <img className="main-section__icons" src={ClipboardIcon} alt="복사 버튼"/>
+                            <div data-tooltip-text='링크가 복사되었습니다.' id="tooltip"></div>
                         </div>
                     </div>
                     

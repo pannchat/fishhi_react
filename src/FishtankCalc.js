@@ -62,8 +62,13 @@ const FishtankCalc = () => {
                     </div>
                     <div className="flex-box--func">
                         <input id="calc-btn" type="button" value="계산"/>
+                        <div id="clipboard">
+                        <img src="./icons/clipboard.svg" alt="복사 버튼"/>
+                        <div data-tooltip-text='링크가 복사되었습니다.' id="tooltip"></div>
+                        </div>
                     </div>
-                    <div className="main-secion__calc-capacity">
+                    
+                    <div className="main-section__calc-capacity">
                         {capacity}
                     </div>
                 </div>

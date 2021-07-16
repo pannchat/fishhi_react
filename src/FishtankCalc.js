@@ -6,6 +6,11 @@ import styled from 'styled-components';
 import ClipboardIcon from './img/icons/clipboard.svg';
 const FishtankCalc = () => {
     const [tankWidth, setTankWidth] = useState(0);
+    const [tankHeight, setTankHeight] = useState(0);
+    const [tankDepth, setTankDepth] = useState(0);
+    const [waterLvel, setWaterLevel] = useState(0);
+    const [tankWeight, setTankWeight] = useState(0);
+
     const [capacity, setCapacity] = useState('내 수조의 용량을 계산해보세요.');
     let TankInput = styled.input`
         width:70px;
@@ -80,4 +85,7 @@ const FishtankCalc = () => {
     )
 };
 
+function calc (){
+
+}
 export default FishtankCalc;

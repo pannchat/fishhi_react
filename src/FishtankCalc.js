@@ -1,10 +1,21 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import './FishtankCalc.scss';
 import NavBar from './NavBar';
 import styled from 'styled-components';
 
 import ClipboardIcon from './img/icons/clipboard.svg';
 const FishtankCalc = () => {
+    useEffect(()=>{
+        // if ("serviceWorker" in navigator) {
+        //         window.addEventListener("load", () => {
+        //             navigator.serviceWorker.register("/service-worker.js");
+        //         });
+        // }
+        // 크롬에서만 pwa 설치버튼 보여주기. 
+    if( (navigator.userAgent).indexOf("Chrome") > -1){
+        document.getElementById("buttonInstall").style.display = 'block';
+}
+    })
     const [tankWidth, setTankWidth] = useState(0);
     const [tankHeight, setTankHeight] = useState(0);
     const [tankDepth, setTankDepth] = useState(0);

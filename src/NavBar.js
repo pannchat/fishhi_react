@@ -1,4 +1,4 @@
-import React,{Component, useState,memo, useEffect} from 'react';
+import React,{Component, useState,memo, useEffect,useCallback} from 'react';
 
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
@@ -27,11 +27,12 @@ const SearchResultList = styled.div`
   vertical-align:middle;
   font-size:14pt;
 `;
-function NavBar({showBackBtn=true}){
+const NavBar = ({showBackBtn=true}) => {
+
   let history = useHistory();
   const test = {"data":[
     {"id":1,"name":"라쿤 타이거 새우","keyword":['비쉬림프','쉬림프']},
-    {"id":2,"name":"구피","keyword":["혐피"]},
+    {"id":2,"name":"오렌지 타이거 새우 (Orange tiger shrimp, Tangerine tiger shrimp)","keyword":["비쉬림프"]},
     {"id":3,"name":"오토싱","keyword":["오토신"]},
     {"id":5,"name":"다리오다리오","keyword":["스칼렛바디스"]},
     {"id":6,"name":"아프리카발톱개구리","keyword":["똥고기"]},
@@ -52,13 +53,12 @@ function NavBar({showBackBtn=true}){
       const [suggestion,setSuggestion] =useState([]);
       useEffect(()=>{
         const loadUsers = async () =>{
-
           // const response = await axios.get('https://reqres.in/api/users');
           setData(test.data);
         }
         loadUsers();
       },[]);
-      const onChangeHandler = (text) => {
+      const onChangeHandler = useCallback((text) => {
         let matches = [];
         let matches2 = []
         text = text.replace('\\','');
@@ -85,16 +85,17 @@ function NavBar({showBackBtn=true}){
             return test
           })
         }
-
         var result = new Set([...matches,...matches2])
         setSuggestion([...result])
         setText(text)
 
-      }
-      const onSuggestHandler = (text) =>{
+      },[text,suggestion]);
+
+
+      const onSuggestHandler = useCallback((text) =>{
         setText(text)
         onChangeHandler(text)
-      }
+      },[text]);
     return(
         <>
             <div className="nav-top">
@@ -144,4 +145,4 @@ function NavBar({showBackBtn=true}){
     )
 }
 
-export default NavBar;
+export default React.memo(NavBar);

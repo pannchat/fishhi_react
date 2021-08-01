@@ -2,13 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import './Feed.css';
 import UserImg from './img/file/user.jpeg';
+import {FlexContainer} from './Layout';
 let PostCard = styled.div`
-    width:90%;
-    margin:10px;
+    width:100%;
     border-radius:5px;
     border: 1px solid #ECECEC;
+    margin-bottom:10px;
 `;
 let ProfileContainer = styled.div`
+    box-sizing:border-box;
     width:50px;
     height:50px;
     padding:10px;
@@ -40,9 +42,8 @@ let PostBy = styled.span`
     padding:0 5px 5px 0;
     width:70px;
     text-align:right;
-
-
 `;
+
 
 function Post(){
     const thumbnail = {
@@ -52,24 +53,24 @@ function Post(){
         objectFit:'cover'
     }
     return(
-        <>
-        <PostCard>
-            <img style={thumbnail} src="/img/file/thumb.jpeg"/>
-            <div className="card-caption">
-                <ProfileContainer><ProfileImg src={UserImg}/></ProfileContainer>
-                <PostTitle>#미니어항 블라블라블라블라블라블라</PostTitle>
-            <PostBy>Post By.<br/>씨알이</PostBy>
-            </div>
-        </PostCard>
-        <PostCard>
-            <img style={thumbnail} src="/img/file/thumb.jpeg"/>
-            <div className="card-caption">
-            <ProfileContainer><ProfileImg src={UserImg} alt='user profile'/></ProfileContainer>
-                <PostTitle>#미니어항 블라블라블라블라블라블라</PostTitle>
-            <PostBy>Post By.<br/>씨알이</PostBy>
-            </div>
-        </PostCard>
-        </>
+        <FlexContainer direction={'column'}>
+            <PostCard>
+                <img style={thumbnail} src="/img/file/thumb.jpeg"/>
+                <div className="card-caption">
+                    <ProfileContainer><ProfileImg src={UserImg}/></ProfileContainer>
+                    <PostTitle>#미니어항 블라블라블라블라블라블라</PostTitle>
+                <PostBy>Post By.<br/>씨알이</PostBy>
+                </div>
+            </PostCard>
+            <PostCard>
+                <img style={thumbnail} src="/img/file/thumb.jpeg"/>
+                <div className="card-caption">
+                <ProfileContainer><ProfileImg src={UserImg} alt='user profile'/></ProfileContainer>
+                    <PostTitle>#미니어항 블라블라블라블라블라블라</PostTitle>
+                <PostBy>Post By.<br/>씨알이</PostBy>
+                </div>
+            </PostCard>
+        </FlexContainer>
     )
 }
 function Feed(){

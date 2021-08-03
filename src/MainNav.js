@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import './MainNav.css';
 import Leaves from "./img/icons/leaves.svg";
@@ -27,13 +28,16 @@ background-color:black;
 function MainNav(){
     return(
         <div className="main-nav">
-
+            
             <NAV_BTN>
-                <NAV_ICON color={'#bac5d0'}>    
-                    <img className="nav-icons" src={Aquarium}/>
-                </NAV_ICON>
-                <span>#어항계산기</span>
+                <Link to="/calc" className="flex-box">
+                    <NAV_ICON color={'#bac5d0'}>    
+                        <img className="nav-icons" src={Aquarium}/>
+                    </NAV_ICON>
+                    <span>#어항계산기</span>
+                </Link>
             </NAV_BTN>
+
             <NAV_BTN>
                 <NAV_ICON color={'#e4e8c6'}>    
                     <img className="nav-icons" src={Leaves}/>

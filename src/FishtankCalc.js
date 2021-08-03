@@ -1,4 +1,4 @@
-import React,{useState,useEffect, useCallback} from 'react';
+import React,{useState,useEffect, useCallback, useRef} from 'react';
 import './FishtankCalc.scss';
 import NavBar from './NavBar';
 import styled from 'styled-components';
@@ -37,6 +37,7 @@ const FishtankCalc = () => {
 // }
     
     })
+    const [toggle, setToggle] = useState(false);
     const [warning, setWarning] = useState(0);
     const [inputs, setInputs] = useState({
         tankWidth: '',
@@ -82,10 +83,11 @@ const FishtankCalc = () => {
         }else if(Math.max(tankWidth,tankDepth,tankHeight,tankSand,waterLevel,tankWeight) > 10000){
             alert("ㅎㅎ바다속에 사세요?🎣");
             return false;
-        }else if( tankSand > tankHeight || waterLevel > tankHeight || parseInt(tankSand)+parseInt(waterLevel) > tankHeight){
-            alert("이상한 값 멈춰!🖐🖐🖐 ");
-            return false; 
         }
+        // else if( tankSand > tankHeight || waterLevel > tankHeight || parseInt(tankSand)+parseInt(waterLevel) > tankHeight){
+        //     alert("이상한 값 멈춰!🖐🖐🖐 ");
+        //     return false; 
+        // }
         return true;
     }
     const calculator = () =>{
@@ -108,7 +110,24 @@ const FishtankCalc = () => {
         })
         console.log(inputs)
     }
+    const copyLink = useRef();
+    const tooltip = () =>{
+        document.getElementById('tooltip').className='show';
+        setTimeout(() => {
+            document.getElementById('tooltip').classList.remove('show')
+        }, 3000);
+        console.log()
+        var url = document.getElementById('url');
+        url.innerText = `https://fishhi.kr/calc`;
     
+        var range = document.createRange();
+        range.selectNode(url.childNodes[0]);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        document.execCommand("copy");
+        sel.removeRange(range);
+    }
     return(
     <>
         <NavBar />
@@ -133,21 +152,35 @@ const FishtankCalc = () => {
                         <TankInput onChange={onChange} name="tankDepth" type="number" placeholder="세로" value={tankDepth} /><div>cm</div>
                         <TankInput onChange={onChange} name="tankHeight" type="number" placeholder="높이" value={tankHeight} /><div>cm</div>
                     </div>
-                    <div className="main-section__detailed">
-                        <TankInput onChange={onChange} name="thickness" type="number" placeholder="유리두께"/><div>T</div>
-                        <TankInput onChange={onChange} name="tankSand" type="number" placeholder="바닥재"/><div>cm</div>
-                        <TankInput onChange={onChange} name="waterLevel" type="number" placeholder="만수위까지"/><div>cm</div>
-                    </div>
+                    {toggle?
+                    (
+                        <div className="main-section__detailed">
+                            <TankInput onChange={onChange} name="thickness" type="number" placeholder="유리두께"/><div>T</div>
+                            <TankInput onChange={onChange} name="tankSand" type="number" placeholder="바닥재"/><div>cm</div>
+                            <TankInput onChange={onChange} name="waterLevel" type="number" placeholder="만수위까지"/><div>cm</div>
+                        </div>
+                    )
+                    :null
+                    }
+                   
                     <div className="flex-box--func">
                         <span>상세 설정</span>
                         <label className="switch-button">상세설정 Toggle
-                        <input type="checkbox" id="checkbox"/>
+                        <input type="checkbox" id="checkbox" onClick={()=>{
+                            setToggle(!toggle);
+                            setInputs({
+                                ...inputs,
+                                tankSand:'',
+                                thickness:'',
+                                waterLevel:'',
+                            })
+                            }}/>
                         <span className="onoff-switch"></span>
                         </label>
                     </div>
                     <div className="flex-box--func">
                         <input id="calc-btn" type="button" value="계산" onClick={()=>{calculator()}}/>
-                        <div id="clipboard">
+                        <div id="clipboard" onClick={()=>tooltip()}>
                             <img className="main-section__icons" src={ClipboardIcon} alt="복사 버튼"/>
                             <div data-tooltip-text='링크가 복사되었습니다.' id="tooltip"></div>
                         </div>
@@ -158,6 +191,7 @@ const FishtankCalc = () => {
                         {inputs.tankWeight ? (<span>어항의 무게는 약 <b>{inputs.tankWeight.toFixed(2)}kg</b><br/></span>) : ''}
                     </div>
                 </div>
+                <div id="url"></div>
                 <ul className="flex-box" id="search-container">
                 <CalcSupplies capacity={inputs.capacity} tankWeight={inputs.tankWeight} />
             </ul>

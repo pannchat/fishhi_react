@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import axios from 'axios';
 
-const CalcSupplies = () =>{
+const CalcSupplies = ({capacity, tankWeight}) =>{
     const [suppList, setSuppList] = useState([]); 
     useEffect(()=>{
 
@@ -20,7 +20,7 @@ const CalcSupplies = () =>{
         <div >
             <p >{el.productName}</p>
             권장 사용량 : {el.recommendedUsage1}L 당 {el.recommendedUsage2}cc<br/>
-            내 어항 사용량 : <b id="">?</b> 권장<br />
+            내 어항 사용량 : <b>{capacity? `${(capacity/el.recommendedUsage1*el.recommendedUsage2).toFixed(2)}cc`:'?'}</b> 권장<br />
             <a className="open">상세 설명서 보기</a>
         </div>
         </li>

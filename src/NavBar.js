@@ -99,7 +99,7 @@ const NavBar = ({showBackBtn=true}) => {
     return(
         <>
             <div className="nav-top">
-                { showBackBtn ? <GoBackBtn src={goBackIcon} onClick={()=>{history.goBack()}}/> : <span></span>}
+                { showBackBtn ? <GoBackBtn src={goBackIcon} onClick={()=>{history.push('/')}}/> : <span></span>}
                 <SearchBtn className='' src={SearchIcon} onClick={()=> setState({isPaneOpenBottom:true})}/>
             </div>
             <div>
@@ -133,7 +133,11 @@ const NavBar = ({showBackBtn=true}) => {
       >
         
         {suggestion && suggestion.map((suggestion, i) => 
-          <SearchResultList key={i} onClick={()=>history.push('/fish/'+suggestion.id)}>
+          <SearchResultList key={i} onClick={()=>{
+            setState({isPaneOpenBottom:false});
+            history.push('/fish/'+suggestion.id);
+            
+            }}>
             {suggestion.name}
             
           </SearchResultList>

@@ -198,3 +198,46 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 
+ul{
+    padding-inline-start: 0;
+    list-style:none; 
+}
+.search-list{
+    display:flex;
+    
+    border-radius: 5px;
+
+}
+.search-list > * {
+    margin: 0px;
+}
+.search-list > img{
+    height:100px;
+    margin:10px;
+}
+.supplies-product-img{
+    height:100px;width:100px;object-fit: contain;
+}
+@media (max-width: 615px) {
+    .main-section{
+        flex-direction: column;
+    }
+    #search-container{
+        display: flex;
+        flex:1 1 300px;
+        max-width:300px;
+    }
+}
+
+
+@media (min-width: 617px) {
+    .main-section{
+        flex-direction: row;
+    }
+    #search-container{
+        display: flex;
+        flex:1 1 300px;
+        max-width:300px;
+        margin-left:40px;
+    }
+}

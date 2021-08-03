@@ -2,7 +2,7 @@ import React,{useState,useEffect, useCallback} from 'react';
 import './FishtankCalc.scss';
 import NavBar from './NavBar';
 import styled from 'styled-components';
-
+import CalcSupplies from './CalcSupplies';
 import ClipboardIcon from './img/icons/clipboard.svg';
 let TankInput = styled.input.attrs({
     type:'number'
@@ -35,7 +35,9 @@ const FishtankCalc = () => {
 //     if( (navigator.userAgent).indexOf("Chrome") > -1){
 //         document.getElementById("buttonInstall").style.display = 'block';
 // }
+    
     })
+    const [warning, setWarning] = useState(0);
     const [inputs, setInputs] = useState({
         tankWidth: '',
         tankHeight: '',
@@ -63,9 +65,34 @@ const FishtankCalc = () => {
         console.log(inputs)
     }
     const { tankWidth, tankDepth, tankHeight, tankSand, waterLevel,thickness,tankWeight } = inputs;
+    const validation = () =>{
+        
+        if (warning > 5){
+            alert("그만 괴롭혀주세요 " + '🤬'.repeat(warning));
+            setWarning(0);
+            return false;
+        }
+        if(Math.min(tankWidth,tankDepth,tankHeight,tankSand,waterLevel,tankWeight) < 0){
+            alert("ㅎㅎ😡");
+            setWarning(warning+1);
+            return false;
+        }else if (tankWidth > tankDepth*100 || tankWidth > tankHeight*100 ||  tankDepth > tankWidth*100 || tankDepth > tankHeight*100 || tankHeight > tankDepth*100 || tankHeight > tankWidth*100){
+            alert("이런 어항이 어딨어요 😮‍💨");
+            return false;
+        }else if(Math.max(tankWidth,tankDepth,tankHeight,tankSand,waterLevel,tankWeight) > 10000){
+            alert("ㅎㅎ바다속에 사세요?🎣");
+            return false;
+        }else if( tankSand > tankHeight || waterLevel > tankHeight || parseInt(tankSand)+parseInt(waterLevel) > tankHeight){
+            alert("이상한 값 멈춰!🖐🖐🖐 ");
+            return false; 
+        }
+        return true;
+    }
     const calculator = () =>{
-
+        if (!validation()) return;
         // 유리두께 값이 있으면 어항 무게를 계산
+        calc(tankWidth,tankHeight,tankDepth,tankSand,waterLevel);
+
         if(thickness){
             var x = (((tankWidth*10 * tankHeight * 10 * thickness * 2.5) /1000000) * 2);
             var y = (((tankHeight*10 * ((tankDepth * 10)-thickness*2) * thickness * 2.5) /1000000) * 2);
@@ -131,13 +158,116 @@ const FishtankCalc = () => {
                         {inputs.tankWeight ? (<span>어항의 무게는 약 <b>{inputs.tankWeight.toFixed(2)}kg</b><br/></span>) : ''}
                     </div>
                 </div>
+                <ul className="flex-box" id="search-container">
+                <CalcSupplies capacity={inputs.capacity} tankWeight={inputs.tankWeight} />
+            </ul>
             </div>
+
         </section>
+
     </>
     )
 };
 
-function calc (){
+function calc (tankWidth2,tankHeight2,tankDepth2,tankSand2,waterLevel2){
+    var s=100;
+    var min = Math.min(tankWidth2,tankDepth2,tankHeight2)
+    console.log(min)
+    var tankWidth = (tankWidth2/min)*s;
+    var tankHeight = (tankHeight2/min)*s;
+    var tankDepth = (tankDepth2/min)*s;
+    var tankSand = (tankSand2/min)*s;
+    var waterLevel = (waterLevel2/min)*s
+    if(Math.max(tankWidth,tankDepth,tankHeight)>200){
+        var scale = 200/Math.max(tankWidth,tankDepth,tankHeight);
+        tankWidth *= scale;
+        tankDepth *= scale;
+        tankHeight *= scale;
+        tankSand *= scale;
+        waterLevel *= scale;
+    }
 
+    var front = document.getElementById("front");
+    var back = document.getElementById("back");
+    var left = document.getElementById("left");
+    var right = document.getElementById("right");
+    var top = document.getElementById("top");
+    var bottom = document.getElementById("bottom");
+    var checkbox = document.getElementById("checkbox");
+    var tankArr = [front,back,left,right,top,bottom]
+    for (const key in tankArr){
+        tankArr[key].innerHTML = "";
+    }
+    if (tankSand != ""){
+        
+
+        var sand =`<div style='width:100%; height:${tankSand}px;position:absolute;bottom:0;background-color:rgba(150, 96, 29, 0.714);margin:0px'></div>`;
+        front.innerHTML = sand;
+
+        left.innerHTML = sand;
+        right.innerHTML=sand;
+        back.innerHTML = `<div style='width:100%; height:${tankSand}px;position:absolute;top:0;background-color:rgba(150, 96, 29, 0.714);margin:0px'></div>`;
+
+        
+    }
+    if (waterLevel != ""){
+
+        var sand =`<div style='width:100%; height:${waterLevel}px;position:absolute;top:0;background-color:rgba(255, 255, 255, 0.714);margin:0px'></div>`;
+        front.innerHTML += sand;
+        left.innerHTML += sand;
+        right.innerHTML += sand;
+        back.innerHTML += `<div style='width:100%; height:${waterLevel}px;position:absolute;bottom:0;background-color:rgba(255, 255, 255, 0.714);margin:0px'></div>`;
+        
+    }
+
+    var banner = document.createElement("b");
+    var textNode = document.createTextNode("fishhi.kr");
+    banner.setAttribute("style","color:whitesmoke");
+    banner.appendChild(textNode);
+    front.appendChild(banner);
+    
+    front.style.width = tankWidth + 'px';
+    front.style.height = tankHeight + 'px';
+    front.style.transform = '';
+    front.style.transform = 'translateZ(' + (tankDepth/2) +'px)';
+    back.style.width = tankWidth + 'px';
+    back.style.transform = 'rotate(-180deg) translateZ(' + -(tankDepth/2) +'px)';
+    back.style.height = tankHeight + 'px';
+    left.style.width = tankDepth + 'px';
+    left.style.transform = 'translateX(' + -((tankDepth/2)) +'px) rotateY(90deg)';
+    // left.setAttribute("transform",`translateX(-${tankDepth}px) rotateY(190deg)`);
+    left.style.height = tankHeight + 'px';
+    right.style.width = tankDepth + 'px';
+    right.style.height = tankHeight + 'px';
+    right.style.transform = 'translateX(' +  (tankWidth - tankDepth + tankDepth/2) +'px) rotateY(90deg)';
+    top.style.width = tankWidth + 'px';
+    top.style.height = tankDepth + 'px';
+    top.style.transform = 'translateY(' + -(tankDepth/2) + 'px) rotateX(90deg)';
+    bottom.style.width = tankWidth + 'px';
+    bottom.style.height = tankDepth + 'px';
+    bottom.style.transform = 'translateY(' + (tankHeight - tankDepth + tankDepth/2) + 'px) rotateX(90deg)';
+
+    var containerWidth = document.querySelector('.main-section__tank-container').clientWidth;
+    var containerHeight = document.querySelector('.main-section__tank-container').clientHeight;
+    var face = document.querySelectorAll('.face');
+
+    // 수조 가운데 정렬
+
+    face.forEach(
+        (el) =>{
+            if(tankWidth>tankDepth){
+                el.style.left = (containerWidth/2) - (front.clientWidth/2) + "px";
+            }
+            else if(tankWidth<tankDepth){
+                el.style.left = (containerWidth - Math.min(front.clientWidth,right.clientWidth))/2 + "px";
+            }
+            else{
+                el.style.left = (containerWidth - Math.min(front.clientWidth,right.clientWidth))/2 + "px";
+            }
+            
+            el.style.top = (containerHeight -front.clientHeight)/2 + "px";
+        }
+        
+        );
 }
 export default FishtankCalc;

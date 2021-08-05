@@ -51,10 +51,12 @@ function MainNav(){
                 <span>#열대어검색</span>
             </NAV_BTN>
             <NAV_BTN>
-                <NAV_ICON color={'#bac5d0'}>    
-                    <img className="nav-icons" src={Aquarium}/>
-                </NAV_ICON>
-                <span>#어항관리</span>
+                <Link to="/mypage" className="flex-box">
+                    <NAV_ICON color={'#bac5d0'}>    
+                        <img className="nav-icons" src={Aquarium}/>
+                    </NAV_ICON>
+                    <span>#어항관리</span>
+                </Link>
             </NAV_BTN>
             
         </div>

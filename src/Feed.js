@@ -11,7 +11,7 @@ let PostCard = styled.div`
 `;
 let ProfileContainer = styled.div`
     box-sizing:border-box;
-    width:50px;
+    width:70px;
     height:50px;
     padding:10px;
     display:flex;

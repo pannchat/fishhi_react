@@ -9,6 +9,7 @@ import FishDict from './FishDict';
 import Home from './Home';
 import MyPage from './MyPage';
 import FishtankCalc from './FishtankCalc';
+import FishAddDic from './FishAddDic';
 function App() {
 
   const imgs = {
@@ -25,6 +26,7 @@ function App() {
           <Route path={'/fish/:fid'} component={FishDict} />
           <Route path={'/mypage'} component={MyPage} />
           <Route path={'/calc'} component={FishtankCalc} />
+          <Route path={'/dic'} component={FishAddDic} />
         </Switch>
       </BrowserRouter>
       {/* <Login/> */}

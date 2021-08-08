@@ -59,6 +59,7 @@ const NavBar = ({showBackBtn=true}) => {
         loadUsers();
       },[]);
       const onChangeHandler = useCallback((text) => {
+        
         let matches = [];
         let matches2 = []
         text = text.replace('\\','');
@@ -86,16 +87,20 @@ const NavBar = ({showBackBtn=true}) => {
           })
         }
         var result = new Set([...matches,...matches2])
+        
+        
         setSuggestion([...result])
+        if(text.length > 0 && result.length>0){
+        }
         setText(text)
-
       },[text,suggestion]);
 
 
-      const onSuggestHandler = useCallback((text) =>{
-        setText(text)
-        onChangeHandler(text)
-      },[text]);
+      // const onSuggestHandler = useCallback((text) =>{
+      //   console.log(text);
+      //   setText(text)
+      //   onChangeHandler(text)
+      // },[text]);
     return(
         <>
             <div className="nav-top">
@@ -131,18 +136,26 @@ const NavBar = ({showBackBtn=true}) => {
 
         onRequestClose={() => setState({ isPaneOpenBottom: false })}
       >
-        
-        {suggestion && suggestion.map((suggestion, i) => 
-          <SearchResultList key={i} onClick={()=>{
-            setState({isPaneOpenBottom:false});
-            history.push('/fish/'+suggestion.id);
-            
+        { 
+        suggestion.length>0?
+           (suggestion.map((suggestion, i) => 
+            <SearchResultList key={i} onClick={()=>{
+              setState({isPaneOpenBottom:false});
+              history.push('/fish/'+suggestion.id);
             }}>
             {suggestion.name}
-            
-          </SearchResultList>
-            
-        )}
+            </SearchResultList>)
+            )
+            // 검색어는 있으나 검색결과가 없을때
+            :text.length>1? (
+              <SearchResultList>
+                찾으시는 내용이 없어요 ㅠㅠ
+              </SearchResultList>)
+            :(
+              // 첫화면
+            <SearchResultList>검색해보세요</SearchResultList>
+            )
+        }
       </SlidingPane>
     </div>
         </>

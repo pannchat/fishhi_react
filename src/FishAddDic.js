@@ -1,9 +1,10 @@
-import React from 'react';
+import React,{useCallback, useState} from 'react';
 import NavBar from './NavBar';
 import { FlexContainer } from './Layout'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {Form,Row,Col,Container,Alert,Breadcrumb } from 'react-bootstrap';
+
 const FormField = ({subject,type}) =>{
 
     return(
@@ -12,7 +13,16 @@ const FormField = ({subject,type}) =>{
         </div>
     )
 }
+
+
 const FishAddDic = () => {
+    const [text, setText] = useState('');
+    const onChange = useCallback((e) =>{
+        setText((e.target.value).split("\n").join("\\n"));
+    },[text])
+    const SubstitutionText = () =>{
+    
+    }
     return(
         <>
             <NavBar/>
@@ -43,11 +53,18 @@ const FishAddDic = () => {
                     </Col>
                 </Form.Group>
                 <Form.Group controlId="formFileMultiple" className="mb-3">
-                    <Form.Label>Multiple files input example</Form.Label>
+                    <Form.Label column sm="2">Multiple files input example</Form.Label>
                     <Form.Control type="file" multiple />
                 </Form.Group>
-
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Example textarea</Form.Label>
+                    <Form.Control as="textarea" rows={3} onChange={onChange}/>
+                </Form.Group>
             </Form>
+            
+            <Alert variant={'dark'}>
+                {text}
+            </Alert>
             </Container>
         </>
     )

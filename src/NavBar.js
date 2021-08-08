@@ -33,7 +33,7 @@ const NavBar = ({showBackBtn=true}) => {
   const test = {"data":[
     {"id":1,"name":"라쿤 타이거 새우","keyword":['비쉬림프','쉬림프']},
     {"id":2,"name":"오렌지 타이거 새우 (Orange tiger shrimp, Tangerine tiger shrimp)","keyword":["비쉬림프"]},
-    {"id":3,"name":"오토싱","keyword":["오토신"]},
+    {"id":3,"name":"크리스탈 화이트 새우","keyword":["오토신"]},
     {"id":5,"name":"다리오다리오","keyword":["스칼렛바디스"]},
     {"id":6,"name":"아프리카발톱개구리","keyword":["똥고기"]},
     {"id":7,"name":"구라미","keyword":["똥고기"]},

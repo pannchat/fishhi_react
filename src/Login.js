@@ -1,15 +1,15 @@
 import React from 'react'
-import './css/Login.css';
+import styles from './css/Login.module.css';
 function Form(){
     return(
-        <div className="login-form">
-            <div className="login-form__box">
-                <input className="login-form__input" type="text" name="username" placeholder="아이디"/>
-                <label className="login-form__label">아이디</label>
+        <div className={styles['login-form']}>
+            <div className={styles['login-form__box']}>
+                <input className={styles['login-form__input']} type="text" name="username" placeholder="아이디"/>
+                <label className={styles['login-form__label']}>아이디</label>
             </div>
-            <div className="login-form__box">
-                <input className="login-form__input" type="password" name="password" placeholder="비밀번호"/>
-                <label className="login-form__label">비밀번호</label>
+            <div className={styles['login-form__box']}>
+                <input className={styles['login-form__input']} type="password" name="password" placeholder="비밀번호"/>
+                <label className={styles['login-form__label']}>비밀번호</label>
             </div>
         </div>
     )
@@ -26,7 +26,7 @@ function Login(){
             <h2>Login</h2>
         </header>
         <Form />
-        <input className="login-btn" type="submit" value="로그인"/>
+        <input className={styles['login-btn']} type="submit" value="로그인"/>
         </div>
     )
 }

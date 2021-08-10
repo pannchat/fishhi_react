@@ -1,7 +1,7 @@
 import React,{useCallback, useState,useMemo} from 'react';
 import NavBar from './NavBar';
 import { FlexContainer } from './Layout'; 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.module.css';
 import styled from 'styled-components';
 import './css/init.css';
 

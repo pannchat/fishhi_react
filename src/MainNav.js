@@ -39,10 +39,12 @@ function MainNav(){
             </NAV_BTN>
 
             <NAV_BTN>
+            <Link to="/dic" className="flex-box">
                 <NAV_ICON color={'#e4e8c6'}>    
                     <img className="nav-icons" src={Leaves}/>
                 </NAV_ICON>
                 <span>#수초검색</span>
+                </Link>
             </NAV_BTN>
             <NAV_BTN>
                 <NAV_ICON color={'#bac5d0'}>    

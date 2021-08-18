@@ -6,7 +6,8 @@ import Leaves from "./img/icons/leaves.svg";
 import Aquarium from "./img/icons/aquarium.svg";
 import Fish from "./img/icons/012-fish.svg"
 import AquaManage from "./img/icons/002-aquarium.svg"
-import AquaCalc from "./img/icons/034-calculator.svg"
+import AquaCalc from "./img/icons/017-aquarium.svg"
+import AquaPlant from "./img/icons/030-plant.svg"
 let NAV_BTN = styled.div`
     display:flex;
     justify-content: center;
@@ -42,7 +43,7 @@ function MainNav(){
             <NAV_BTN>
                 <Link to="/calc" className="flex-box">
                     <NavIconBox color={'#EFF2C6'}>    
-                        <NavIcons size={'30px'} src={AquaCalc}/>
+                        <NavIcons size={'40px'} src={AquaCalc}/>
                     </NavIconBox>
                     <span>#어항계산기</span>
                 </Link>
@@ -50,21 +51,23 @@ function MainNav(){
 
             <NAV_BTN>
             <Link to="/dic" className="flex-box">
-                <NavIconBox color={'#c6d9bf'}>    
-                    <NavIcons size={'30px'} src={Leaves}/>
+                <NavIconBox color={'#e6fcf5'}>    
+                    <NavIcons size={'40px'} src={AquaPlant}/>
                 </NavIconBox>
-                <span>#수초검색</span>
+                <span>#임시페이지:dic</span>
                 </Link>
             </NAV_BTN>
+            <Link to="/login" className="flex-box">
             <NAV_BTN>
-                <NavIconBox color={'#dde0e4'}>    
+                <NavIconBox color={'#fff4e6'}>    
                     <NavIcons src={Fish}/>
                 </NavIconBox>
-                <span>#열대어검색</span>
+                <span>#준비중</span>
             </NAV_BTN>
+            </Link>
             <NAV_BTN>
                 <Link to="/mypage" className="flex-box">
-                    <NavIconBox color={'#e2e8e0'}>    
+                    <NavIconBox color={'#f1f3f5'}>    
                         <NavIcons src={AquaManage}/>
                     </NavIconBox>
                     <span>#어항관리</span>

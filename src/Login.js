@@ -1,5 +1,7 @@
 import React from 'react'
+import { Nav } from 'react-bootstrap';
 import styles from './css/Login.module.css';
+import NavBar from './NavBar';
 function Form(){
     return(
         <div className={styles['login-form']}>
@@ -21,13 +23,16 @@ function Login(){
         
     }
     return (
-        <div style={main}>
-        <header>
-            <h2>Login</h2>
-        </header>
-        <Form />
-        <input className={styles['login-btn']} type="submit" value="로그인"/>
-        </div>
+        <>
+            <NavBar/>
+            <div style={main}>
+            <header>
+                <h2>Login</h2>
+            </header>
+            <Form />
+            <input className={styles['login-btn']} type="submit" value="로그인"/>
+            </div>
+        </>
     )
 }
 

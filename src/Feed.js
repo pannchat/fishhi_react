@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import './Feed.css';
 import UserImg from './img/file/user.jpeg';
 import {FlexContainer} from './Layout';
@@ -54,7 +55,7 @@ function Post(){
     }
     return(
         <FlexContainer direction={'column'}>
-            <PostCard>
+            <Link onClick={()=>alert('이 기능은 아직 준비중입니다.\n현재 검색기능과 어항계산기 기능만 이용 가능합니다')}><PostCard>
                 <img style={thumbnail} src="/img/file/thumb.jpeg"/>
                 <div className="card-caption">
                     <ProfileContainer><ProfileImg src={UserImg}/></ProfileContainer>
@@ -62,7 +63,9 @@ function Post(){
                 <PostBy>Post By.<br/>씨알이</PostBy>
                 </div>
             </PostCard>
-            <PostCard>
+            </Link>
+            <Link onClick={()=>alert('이 기능은 아직 준비중입니다.\n현재 검색기능과 어항계산기 기능만 이용 가능합니다')}>
+                <PostCard>
                 <img style={thumbnail} src="/img/file/thumb.jpeg"/>
                 <div className="card-caption">
                 <ProfileContainer><ProfileImg src={UserImg} alt='user profile'/></ProfileContainer>
@@ -70,6 +73,7 @@ function Post(){
                 <PostBy>Post By.<br/>씨알이</PostBy>
                 </div>
             </PostCard>
+            </Link>
         </FlexContainer>
     )
 }

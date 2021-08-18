@@ -5,7 +5,7 @@ import {darken} from 'polished';
 import styled from 'styled-components';
 import styles from './css/init.module.css';
 
-// import {Form,Row,Col,Container,Alert,Breadcrumb,FloatingLabel,Tabs,Tab,Sonnet } from 'react-bootstrap';
+import {Form,Row,Col,Container,Button,FloatingLabel,Tabs,Tab,Sonnet } from 'react-bootstrap';
 
 const FormField = ({subject,type}) =>{
 
@@ -32,14 +32,14 @@ const Text2Json = React.memo(() =>{
     },[text]);
     return(
         <>
-        {/* <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
         <Form.Label>description</Form.Label>
         <Form.Control as="textarea" rows={3} onChange={onChange}/>
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
 
         <Form.Control as="textarea" rows={3} value={text} readOnly/>
-        </Form.Group> */}
+        </Form.Group>
         </>
     )
 });
@@ -66,15 +66,13 @@ const FishAddDic = () => {
     return(
         <>
             <NavBar/>
-            {/* <FlexContainer direction={'column'}>
-                <FormField subject={'species'}></FormField>
-                <FormField subject={'standard_length'}></FormField>
-            </FlexContainer> */}
-            {/* <Container> */}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+      
+            <Container>
             <Alert variant={palette.gray}>
                 fish_info
             </Alert>
-            {/* <Form>
+            <Form>
                 <Form.Group as={Row} className="mb-3" controlId="species">
                     <Form.Label column sm="3">
                     species
@@ -118,11 +116,22 @@ const FishAddDic = () => {
                         </Form.Group>
                     </Row>
                 <Text2Json />
+                <Row className="mb-3">
+                <Form.Label column sm="11">
+                    </Form.Label>
+                    <Col sm="1">
+                    <Button variant="outline-secondary" onClick={()=>alert("임시메세지:제출하신 form은 검토후 DB에 저장됩니다.(이 form은 아직 실제로 저장되지 않습니다.)")}>제출</Button>
+                    </Col>
+                        
 
+                </Row>
+                
+                
             </Form>
-             */}
-
-            {/* </Container> */}
+            
+            
+            </Container>
+            
         </>
     )
 }

@@ -33,6 +33,7 @@ const MyPage = () =>{
                         <div style={{fontSize:'9pt'}}>admin@admin.com</div>
                     </FlexContainer>
                 </FlexContainer>
+                s
                 </MyProfile>
             </FlexContainer>
         </>

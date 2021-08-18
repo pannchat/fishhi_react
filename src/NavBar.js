@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import './css/NavBar.css'
 // import axios from 'axios'
 import { useHistory } from 'react-router';
-import {AddDic} from './img/icons/book.js';
+import {AddDic, ShrimpIcon} from './img/icons/book.js';
 import { Route, Link } from 'react-router-dom';
 
 let SearchBtn = styled.img`
@@ -28,7 +28,7 @@ const SearchResultList = styled.div`
   line-height:50px;
   vertical-align:middle;
   font-size:14pt;
-  color:#adb4ad;
+
 `;
 const NavBar = ({showBackBtn=true}) => {
 
@@ -111,6 +111,7 @@ const NavBar = ({showBackBtn=true}) => {
         justify-content:center;
         align-items:center;
         height:70vh;
+        color:#adb4ad;
       `;
     return(
         <>
@@ -160,16 +161,26 @@ const NavBar = ({showBackBtn=true}) => {
             // 검색어는 있으나 검색결과가 없을때
             :text.length>1? (
               <SearchResultList>
-                <ResultInform>
-                  <AddDic size={'100px'} color={'#adb4ad'}/>
-                  <span>찾으시는 내용이 없어요 ㅠㅠ</span>
-                  <span>내용을 직접 추가해주세요</span>
-                </ResultInform>
-                
+                <Link to="/dic" 
+                      onClick={()=>
+                      setState({isPaneOpenBottom:false})
+                      }>
+                  <ResultInform>
+                    <AddDic size={'100px'} color={'#adb4ad'}/>
+                      <span>찾으시는 내용이 없어요 ㅠㅠ</span>
+                      <span>내용을 직접 추가해주세요</span>
+                  </ResultInform>
+                </Link>
               </SearchResultList>)
             :(
               // 첫화면
-            <SearchResultList>검색해보세요</SearchResultList>
+              
+            <SearchResultList>
+              <ResultInform>
+                <ShrimpIcon size={'100px'}/>
+                  '새우'를 검색해보세요
+                </ResultInform>
+            </SearchResultList>
             )
         }
       </SlidingPane>

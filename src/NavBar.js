@@ -10,6 +10,8 @@ import styled from 'styled-components';
 import './css/NavBar.css'
 // import axios from 'axios'
 import { useHistory } from 'react-router';
+import {AddDic} from './img/icons/book.js';
+import { Route, Link } from 'react-router-dom';
 
 let SearchBtn = styled.img`
     width:23px;
@@ -21,11 +23,12 @@ let GoBackBtn = styled.img`
 `;
 const SearchResultList = styled.div`
   border:none;
-  border-bottom:1px solid #6E7881;
+  // border-bottom:1px solid #6E7881;
   box-sizing:border-box;
   line-height:50px;
   vertical-align:middle;
   font-size:14pt;
+  color:#adb4ad;
 `;
 const NavBar = ({showBackBtn=true}) => {
 
@@ -101,6 +104,14 @@ const NavBar = ({showBackBtn=true}) => {
       //   setText(text)
       //   onChangeHandler(text)
       // },[text]);
+
+      const ResultInform = styled.div`
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        height:70vh;
+      `;
     return(
         <>
             <div className="nav-top">
@@ -143,13 +154,18 @@ const NavBar = ({showBackBtn=true}) => {
               setState({isPaneOpenBottom:false});
               history.push('/fish/'+suggestion.id);
             }}>
-            {suggestion.name}
+            {suggestion.name} <hr/>
             </SearchResultList>)
             )
             // 검색어는 있으나 검색결과가 없을때
             :text.length>1? (
               <SearchResultList>
-                찾으시는 내용이 없어요 ㅠㅠ
+                <ResultInform>
+                  <AddDic size={'100px'} color={'#adb4ad'}/>
+                  <span>찾으시는 내용이 없어요 ㅠㅠ</span>
+                  <span>내용을 직접 추가해주세요</span>
+                </ResultInform>
+                
               </SearchResultList>)
             :(
               // 첫화면

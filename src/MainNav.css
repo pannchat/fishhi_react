@@ -9,15 +9,7 @@
     color:#6E7881;
     margin:10px 0;
 }
-.nav-icons{
-    width:30px;
-    height:30px;
-    width:30px;
-    position: relative;
-    left:50%;
-    top:50%;
-    transform: translate(-50%,-50%);
-}
+
 .main-nav-iconbox{
     border-radius: 10px;
     width:60px;

@@ -1,11 +1,11 @@
 import React,{useCallback, useState,useMemo} from 'react';
 import NavBar from './NavBar';
 import { FlexContainer } from './Layout'; 
-import 'bootstrap/dist/css/bootstrap.module.css';
+import {darken} from 'polished';
 import styled from 'styled-components';
-import './css/init.css';
+import styles from './css/init.module.css';
 
-import {Form,Row,Col,Container,Alert,Breadcrumb,FloatingLabel,Tabs,Tab,Sonnet } from 'react-bootstrap';
+// import {Form,Row,Col,Container,Alert,Breadcrumb,FloatingLabel,Tabs,Tab,Sonnet } from 'react-bootstrap';
 
 const FormField = ({subject,type}) =>{
 
@@ -32,18 +32,31 @@ const Text2Json = React.memo(() =>{
     },[text]);
     return(
         <>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+        {/* <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
         <Form.Label>description</Form.Label>
         <Form.Control as="textarea" rows={3} onChange={onChange}/>
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
 
         <Form.Control as="textarea" rows={3} value={text} readOnly/>
-        </Form.Group>
+        </Form.Group> */}
         </>
     )
 });
-
+const palette = {
+    gray : '#ced4da',
+    pink : '#ffc9c9',
+};
+const Alert = styled.div`
+    width:auto;
+    box-sizing : border-box;
+    margin:10px;
+    padding:10px;
+    background-color: ${props => props.variant};
+    border : 1px solid ${props => darken(0.1, props.variant)};
+    border-radius:4px;
+    
+`;
 const FishAddDic = () => {
     
 
@@ -57,11 +70,11 @@ const FishAddDic = () => {
                 <FormField subject={'species'}></FormField>
                 <FormField subject={'standard_length'}></FormField>
             </FlexContainer> */}
-            <Container>
-            <Alert variant={'dark'}>
+            {/* <Container> */}
+            <Alert variant={palette.gray}>
                 fish_info
             </Alert>
-            <Form>
+            {/* <Form>
                 <Form.Group as={Row} className="mb-3" controlId="species">
                     <Form.Label column sm="3">
                     species
@@ -107,9 +120,9 @@ const FishAddDic = () => {
                 <Text2Json />
 
             </Form>
-            
+             */}
 
-            </Container>
+            {/* </Container> */}
         </>
     )
 }

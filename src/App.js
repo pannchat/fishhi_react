@@ -27,6 +27,7 @@ function App() {
           <Route path={'/mypage'} component={MyPage} />
           <Route path={'/calc'} component={FishtankCalc} />
           <Route path={'/dic'} component={FishAddDic} />
+          <Route path={'/:test'} component={Home} />
         </Switch>
       </BrowserRouter>
       {/* <Login/> */}

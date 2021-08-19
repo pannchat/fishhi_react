@@ -54,7 +54,7 @@ function MainNav(){
                 <NavIconBox color={'#e6fcf5'}>    
                     <NavIcons size={'40px'} src={AquaPlant}/>
                 </NavIconBox>
-                <span>#임시페이지:dic</span>
+                <span>#준비중</span>
                 </Link>
             </NAV_BTN>
             <Link to="/login" className="flex-box">
@@ -66,7 +66,7 @@ function MainNav(){
             </NAV_BTN>
             </Link>
             <NAV_BTN>
-                <Link to="/mypage" className="flex-box">
+                <Link to="/login" className="flex-box">
                     <NavIconBox color={'#f1f3f5'}>    
                         <NavIcons src={AquaManage}/>
                     </NavIconBox>

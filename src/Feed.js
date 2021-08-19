@@ -66,7 +66,7 @@ function Post(){
             </Link>
             <Link onClick={()=>alert('이 기능은 아직 준비중입니다.\n현재 검색기능과 어항계산기 기능만 이용 가능합니다')}>
                 <PostCard>
-                <img style={thumbnail} src="/img/file/thumb.jpeg"/>
+                <img style={thumbnail} src="/img/file/thumb2.jpeg"/>
                 <div className="card-caption">
                 <ProfileContainer><ProfileImg src={UserImg} alt='user profile'/></ProfileContainer>
                     <PostTitle>#미니어항 블라블라블라블라블라블라</PostTitle>

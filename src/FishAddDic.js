@@ -1,4 +1,4 @@
-import React,{useCallback, useState,useMemo} from 'react';
+import React,{useCallback, useState,useMemo,useEffect} from 'react';
 import NavBar from './NavBar';
 import { FlexContainer } from './Layout'; 
 import {darken} from 'polished';
@@ -6,7 +6,142 @@ import styled from 'styled-components';
 import styles from './css/init.module.css';
 
 import {Form,Row,Col,Container,Button,FloatingLabel,Tabs,Tab,Sonnet } from 'react-bootstrap';
+import {useDropzone} from 'react-dropzone';
+const baseStyle = {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '20px',
+    borderWidth: 2,
+    borderRadius: 2,
+    borderColor: '#eeeeee',
+    borderStyle: 'dashed',
+    backgroundColor: '#fafafa',
+    color: '#bdbdbd',
+    outline: 'none',
+    transition: 'border .24s ease-in-out'
+  };
+  
+  const activeStyle = {
+    borderColor: '#2196f3'
+  };
+  
+  const acceptStyle = {
+    borderColor: '#00e676'
+  };
+  
+  const rejectStyle = {
+    borderColor: '#ff1744'
+  };
+const thumbsContainer = {
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  marginTop: 16
+};
 
+const thumb = {
+  display: 'inline-flex',
+  borderRadius: 2,
+  border: '1px solid #eaeaea',
+  marginBottom: 8,
+  marginRight: 8,
+  width: 100,
+  height: 100,
+  padding: 4,
+  boxSizing: 'border-box'
+};
+
+const thumbInner = {
+  display: 'flex',
+  minWidth: 0,
+  overflow: 'hidden'
+};
+
+const img = {
+  display: 'block',
+  width: 'auto',
+  height: '100%'
+};
+
+
+function Previews(props) {
+
+  const [files, setFiles] = useState([]);
+  const {getRootProps, getInputProps} = useDropzone({
+    accept: "image/gif, image/jpg, image/jpeg",
+    onDrop: acceptedFiles => {
+      setFiles(acceptedFiles.map(file => Object.assign(file, {
+        preview: URL.createObjectURL(file)
+      })));
+      console.log(acceptedFiles)
+    },
+    maxFiles:5,
+    maxSize:15728640,
+    onDropRejected: () => {
+        alert("에러");
+    }
+  });
+//   (function test(){
+//     setFiles([{
+//         name:'test',
+//         preview:'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile4.uf.tistory.com%2Fimage%2F24611E4853FDAE0B148760'
+//       }]);
+
+//   })();
+  const thumbs = files.map(file => (
+    <div style={thumb} key={file.name}>
+      <div style={thumbInner}>
+        <img
+          src={file.preview}
+          style={img}
+        />
+      </div>
+    </div>
+  ));
+
+  useEffect(() => () => {
+    // Make sure to revoke the data uris to avoid memory leaks
+    files.forEach(file => URL.revokeObjectURL(file.preview));
+  }, [files]);
+  const {
+
+    isDragActive,
+    isDragAccept,
+    isDragReject
+  } = useDropzone({accept: 'image/*'});
+
+  const style = useMemo(() => ({
+    ...baseStyle,
+    ...(isDragActive ? activeStyle : {}),
+    ...(isDragAccept ? acceptStyle : {}),
+    ...(isDragReject ? rejectStyle : {})
+  }), [
+    isDragActive,
+    isDragReject,
+    isDragAccept
+  ]);
+  const containerStyle = {
+      width:'100%',
+      margin:'15px'
+  };
+
+
+
+
+  return (
+    <section style={{padding:'10px'}}>
+      <div {...getRootProps({style})} >
+        <input {...getInputProps()} />
+        <p>여기에 파일을 끌어놓거나 클릭해주세요.</p>
+      </div>
+      <aside style={thumbsContainer}>
+        {thumbs}
+      </aside>
+    </section>
+  );
+}
 const FormField = ({subject,type}) =>{
 
     return(
@@ -15,13 +150,7 @@ const FormField = ({subject,type}) =>{
         </div>
     )
 }
-const test = () =>{
-    return(
-        <div>
-            test
-        </div>
-    )
-}
+
 const Text2Json = React.memo(() =>{
     const TextArea = styled.div`
         word-break:normal;
@@ -72,6 +201,7 @@ const FishAddDic = () => {
             <Alert variant={palette.gray}>
                 fish_info
             </Alert>
+            <Previews />
             <Form>
                 <Form.Group as={Row} className="mb-3" controlId="species">
                     <Form.Label column sm="3">
@@ -120,7 +250,7 @@ const FishAddDic = () => {
                 <Form.Label column sm="11">
                     </Form.Label>
                     <Col sm="1">
-                    <Button variant="outline-secondary" onClick={()=>alert("임시메세지:제출하신 form은 검토후 DB에 저장됩니다.(이 form은 아직 실제로 저장되지 않습니다.)")}>제출</Button>
+                    <Button variant="outline-secondary" onClick={()=>test()}>제출</Button>
                     </Col>
                         
 

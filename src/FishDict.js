@@ -32,7 +32,7 @@ let FishList = {'data':[
 
 let FishImg = styled.img`
     width:100%;
-    padding:10px 0;
+    padding-bottom:0px;
 `;
 let FishContents = styled.div`
     padding:10px;

@@ -115,7 +115,7 @@ const FishtankCalc = () => {
         document.getElementById('tooltip').className='show';
         setTimeout(() => {
             document.getElementById('tooltip').classList.remove('show')
-        }, 3000);
+        }, 3000); 
         console.log()
         var url = document.getElementById('url');
         url.innerText = `https://fishhi.kr/calc`;

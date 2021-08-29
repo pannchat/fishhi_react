@@ -1,9 +1,7 @@
 import React,{useCallback, useState,useMemo,useEffect} from 'react';
 import NavBar from './NavBar';
-import { FlexContainer } from './Layout'; 
 import {darken} from 'polished';
 import styled from 'styled-components';
-import styles from './css/init.module.css';
 
 import {Form,Row,Col,Container,Button,FloatingLabel,Tabs,Tab,Sonnet } from 'react-bootstrap';
 import {useDropzone} from 'react-dropzone';

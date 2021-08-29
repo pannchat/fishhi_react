@@ -1,21 +1,22 @@
 import React,{useEffect,useState} from 'react';
-import axios from 'axios';
+import {useGetSuppliesProduct}  from './shared/hooks/useGetSuppliesProduct';
 
 const CalcSupplies = ({capacity, tankWeight}) =>{
-    const [suppList, setSuppList] = useState([]); 
+    const { data } = useGetSuppliesProduct();
+
     useEffect(()=>{
 
-        axios.get('https://fishhi.kr/supplies_product.json')
-        .then((data) =>{
-            setSuppList(data.data.item);
+        // axios.get('https://fishhi.kr/supplies_product.json')
+        // .then((data) =>{
+        //     setSuppList(data.data.item);
 
 
-        });
+        // });
 
     },[])
-    console.log(suppList);
-    const liElement = suppList.map( (el,idx) => (
-        <li class="search-list" key={idx}>
+
+    const liElement = data?.map((el,idx) => (
+        <li className="search-list" key={`searchList${idx}`}>
         <img src={`https://fishhi.kr/thumbnails/${el.img}`} className="supplies-product-img" alt={`${el.productName} 상품`} />
         <div >
             <p >{el.productName}</p>
@@ -28,7 +29,6 @@ const CalcSupplies = ({capacity, tankWeight}) =>{
     return(
         <>
             {liElement}
-            
         </>
     )
 }

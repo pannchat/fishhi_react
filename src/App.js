@@ -10,6 +10,7 @@ import Home from './Home';
 import MyPage from './MyPage';
 import FishtankCalc from './FishtankCalc';
 import FishAddDic from './FishAddDic';
+import PlantDict from './PlantDict'
 function App() {
 
   const imgs = {
@@ -24,6 +25,7 @@ function App() {
           <Route exact path={'/'} component={Home} />
           <Route path={'/login'} component={Login} />
           <Route path={'/fish/:fid'} component={FishDict} />
+          <Route path={'/plant/:fid'} component={PlantDict} />
           <Route path={'/mypage'} component={MyPage} />
           <Route path={'/calc'} component={FishtankCalc} />
           <Route path={'/dic'} component={FishAddDic} />

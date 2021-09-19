@@ -56,14 +56,15 @@ const FishtankCalc = () => {
     // const [thickness, setthickness] = useState(0);
 
     // const [capacity, setCapacity] = useState('내 수조의 용량을 계산해보세요.');
-
+    useEffect(() => {
+        console.log(inputs);
+      }, [inputs]);
     const onChange = (e) => {
         const { name, value } = e.target;
         setInputs({
             ...inputs,
             [name]: value
         })
-        console.log(inputs)
     }
     const { tankWidth, tankDepth, tankHeight, tankSand, waterLevel,thickness,tankWeight } = inputs;
     const validation = () =>{

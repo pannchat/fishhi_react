@@ -44,6 +44,10 @@ const NavBar = ({showBackBtn=true}) => {
     {"id":9,"name":"코리도라스 듀프리카레우스","keyword":["Corydoras duplicareus","듀플리"]},
     {"id":10,"name":"코리도라스 스터바이","keyword":["Corydoras sterbai"]},
   ]};
+  const test2 = {"data":[
+    {"id":1,"name":"아누비아스 나나","keyword":['비쉬림프','쉬림프'], "classification":"plant"},
+
+  ]};
     
     const [state, setState] = useState({
         isPaneOpen: false,
@@ -57,7 +61,7 @@ const NavBar = ({showBackBtn=true}) => {
       useEffect(()=>{
         const loadUsers = async () =>{
           // const response = await axios.get('https://reqres.in/api/users');
-          setData(test.data);
+          setData([...test.data, ...test2.data]);
         }
         loadUsers();
       },[]);
@@ -153,6 +157,9 @@ const NavBar = ({showBackBtn=true}) => {
            (suggestion.map((suggestion, i) => 
             <SearchResultList key={i} onClick={()=>{
               setState({isPaneOpenBottom:false});
+              if(suggestion.classification === 'plant')
+              history.push('/plant/'+suggestion.id);
+              else
               history.push('/fish/'+suggestion.id);
             }}>
             {suggestion.name} <hr/>

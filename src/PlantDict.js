@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import NavBar from './NavBar';
-import Ruler from './img/icons/ruler.svg';
+import Sun from './img/icons/sun.svg';
 import Thermometer from './img/icons/thermometer.svg';
 import PhMeter from './img/icons/ph-meter.svg'
 import BreedingEnv from './BreedingEnv'
@@ -58,7 +58,7 @@ function PlantDict({match}){
         
         </PlantContents>
         <BreedingEnvContainer>
-        <BreedingEnv icon={Ruler} property={'광량'} params1={plants.amount_of_light}/>
+        <BreedingEnv icon={Sun} property={'광량'} params1={plants.amount_of_light}/>
         <BreedingEnv icon={Thermometer} property={'온도'} params1={plants.min_temperature} params2={plants.max_temperature}/>
         <BreedingEnv icon={PhMeter} property={'pH'} params1={plants.min_pH} params2={plants.max_pH}/>
         </BreedingEnvContainer>

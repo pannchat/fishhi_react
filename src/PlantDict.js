@@ -51,7 +51,7 @@ function PlantDict({match}){
         <>
         <NavBar/>
         <PlantImg src={plants.thumbnail}/>
-        <InformSource>출처 : 슈림피스트</InformSource>
+        <InformSource>출처 : 피쉬하이</InformSource>
         <PlantContents>
         <h2>{plants.species}</h2>
         <ShowDetail contents={plants.description} lineClamp={7}/>

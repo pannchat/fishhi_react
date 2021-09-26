@@ -1,9 +1,9 @@
 import React,{useEffect,useState} from 'react';
 import {useGetSuppliesProduct}  from './shared/hooks/useGetSuppliesProduct';
-
+import styled from 'styled-components';
 const CalcSupplies = ({capacity, tankWeight}) =>{
     const { data } = useGetSuppliesProduct();
-
+    const [toggle, setToggle] = useState(false);
     useEffect(()=>{
 
         // axios.get('https://fishhi.kr/supplies_product.json')
@@ -15,7 +15,8 @@ const CalcSupplies = ({capacity, tankWeight}) =>{
 
     },[])
 
-    const liElement = data?.map((el,idx) => (
+
+    const liElement = (data) => data?.map((el,idx) => (
         <li className="search-list" key={`searchList${idx}`}>
         <img src={`https://fishhi.kr/thumbnails/${el.img}`} className="supplies-product-img" alt={`${el.productName} 상품`} />
         <div >
@@ -26,9 +27,38 @@ const CalcSupplies = ({capacity, tankWeight}) =>{
         </div>
         </li>
     ))
+    const ListHeader = styled.div`
+        background-color:skyblue;
+        width:100%;
+        height:40px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    `;
+    const ListSearch = styled.input`
+    border : 1px solid black;
+    width:100%;
+    box-sizing:border-box;
+    `;
+
+    const ListBody = styled.div`
+
+    `;
+
     return(
         <>
-            {liElement}
+        
+        <ListHeader onClick={()=>{ setToggle(!toggle) }}>약품</ListHeader>
+        <ListSearch></ListSearch>
+        <ListBody>
+            { toggle 
+            ?liElement(data)
+            :liElement(data?.slice(0,3))
+
+        }
+        </ListBody>
+        
+            
         </>
     )
 }

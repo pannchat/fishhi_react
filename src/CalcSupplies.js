@@ -39,6 +39,9 @@ const CalcSupplies = ({capacity, tankWeight}) =>{
     border : 1px solid black;
     width:100%;
     box-sizing:border-box;
+    height:25px;
+    outline:none;
+
     `;
 
     const ListBody = styled.div`
@@ -48,15 +51,15 @@ const CalcSupplies = ({capacity, tankWeight}) =>{
     return(
         <>
         
-        <ListHeader onClick={()=>{ setToggle(!toggle) }}>약품</ListHeader>
-        <ListSearch></ListSearch>
-        <ListBody>
-            { toggle 
-            ?liElement(data)
-            :liElement(data?.slice(0,3))
+            <ListHeader onClick={()=>{ setToggle(!toggle) }}>약품</ListHeader>
+            <ListSearch></ListSearch>
+            <ListBody>
+                { toggle 
+                ?liElement(data)
+                :liElement(data?.slice(0,3))
 
-        }
-        </ListBody>
+            }
+            </ListBody>
         
             
         </>

@@ -26,7 +26,6 @@ let ShowDetail = ({contents,lineClamp=0}) =>{
     let ToggleBtn = styled.img`
         width:20px;
     `;
-        
 
     return(
         <>

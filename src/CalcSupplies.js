@@ -45,12 +45,14 @@ const CalcSupplies = ({capacity, tankWeight}) =>{
     `;
 
     const ListBody = styled.div`
+        overflow:scroll;
+        height:300px;
 
     `;
 
     return(
         <>
-        
+            
             <ListHeader onClick={()=>{ setToggle(!toggle) }}>약품</ListHeader>
             <ListSearch></ListSearch>
             <ListBody>

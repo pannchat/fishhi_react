@@ -24,6 +24,15 @@ React, Javascript, CSS, HTML
 
 [2021/08/08 이미지 업로드 방식 논의](https://www.notion.so/2021-08-08-68ab90453a644f558642348cf85efacf)
 
+[Fishhi](https://www.notion.so/ea07094872244678b196df9bffbb453a)
+
+[08/22 회의](https://www.notion.so/08-22-de3b634200434fb8b454aef546a40919)
+
+[09.19회의](https://www.notion.so/09-19-993fbc6c81a04f07977e7a3a5de099fa)
+
+[0926 애자일](https://www.notion.so/0926-b151369bc2504cad95fb3de24209c64c)
+
+[supplies 고려사항](https://www.notion.so/supplies-12ee3f95e01a4b0581e25ee5dc36d9c5)
 
 # ERD
 

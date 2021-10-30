@@ -3,6 +3,7 @@ import NavBar from './NavBar';
 import styled from 'styled-components';
 import { FlexContainer } from './Layout';
 import UserImg from './img/file/user.jpeg';
+import LockImg from './img/icons/locked.svg';
 const MyProfile = styled.div`
     box-sizing:border-box;
     background-color:#8AA1A1;
@@ -32,17 +33,21 @@ let ProfileBtn = styled.button`
     background-color:#8AA1A1;
 `;
 let PostCard = styled.div`
+    
     width:100%;
     border-radius:5px;
     border: 1px solid #ECECEC;
     margin-bottom:10px;
 `;
 let TitleContainer = styled.div`
-    width:100%;
+    width:auto;
     box-sizing:border-box;
+    padding:5px;
     display:flex;
     flex-direction:column;
-
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 `;
 
 let PostTitle = styled.div`
@@ -68,6 +73,24 @@ let PostBy = styled.span`
     width:70px;
     text-align:right;
 `;
+let LockCon = styled.div`
+position:relative;
+`;
+let LockDiv = styled.div`
+    border-radius:50%;
+    background-color:rgba(0,0,0,0.5);
+    width:30px;
+    height:30px;
+    position:absolute;
+    top:10px;
+    right:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+`;
+let LockImg2 = styled.img`
+    width:20px;
+`
 const MyPage = () =>{
     const thumbnail = {
         width:"100%",
@@ -92,14 +115,19 @@ const MyPage = () =>{
             </FlexContainer>
             <FlexContainer>
             <PostCard>
+            <LockCon>
+                <LockDiv><LockImg2 src={LockImg}/></LockDiv>
+            </LockCon>
                 <img style={thumbnail} src="/img/file/thumb.jpeg"/>
                 <div className="card-caption">
                     <TitleContainer>
                         <PostTitle>#미니어항 블라블라블라블라블라블라</PostTitle>
                         <PostDescription>콩나나항</PostDescription>
                     </TitleContainer>
+                    
                     <PostBy>2015/01/01~</PostBy>
                 </div>
+                
             </PostCard>
             </FlexContainer>
         </>

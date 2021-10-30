@@ -113,22 +113,37 @@ const MyPage = () =>{
                 <ProfileBtn>프로필 수정</ProfileBtn>
                 </MyProfile>
             </FlexContainer>
-            <FlexContainer>
-            <PostCard>
-            <LockCon>
-                <LockDiv><LockImg2 src={LockImg}/></LockDiv>
-            </LockCon>
-                <img style={thumbnail} src="/img/file/thumb.jpeg"/>
-                <div className="card-caption">
-                    <TitleContainer>
-                        <PostTitle>#미니어항 블라블라블라블라블라블라</PostTitle>
-                        <PostDescription>콩나나항</PostDescription>
-                    </TitleContainer>
+            <FlexContainer direction={'column'}>
+                <PostCard>
+                <LockCon>
+                    <LockDiv><LockImg2 src={LockImg}/></LockDiv>
+                </LockCon>
+                    <img style={thumbnail} src="/img/file/thumb.jpeg"/>
+                    <div className="card-caption">
+                        <TitleContainer>
+                            <PostTitle>#미니어항 블라블라블라블라블라블라</PostTitle>
+                            <PostDescription>콩나나항</PostDescription>
+                        </TitleContainer>
+                        
+                        <PostBy>2015/01/01~</PostBy>
+                    </div>
                     
-                    <PostBy>2015/01/01~</PostBy>
-                </div>
-                
-            </PostCard>
+                </PostCard>
+                <PostCard>
+                <LockCon>
+                    <LockDiv><LockImg2 src={LockImg}/></LockDiv>
+                </LockCon>
+                    <img style={thumbnail} src="/img/file/thumb.jpeg"/>
+                    <div className="card-caption">
+                        <TitleContainer>
+                            <PostTitle>#미니어항 블라블라블라블라블라블라</PostTitle>
+                            <PostDescription>콩나나항</PostDescription>
+                        </TitleContainer>
+                        
+                        <PostBy>2015/01/01~</PostBy>
+                    </div>
+                    
+                </PostCard>
             </FlexContainer>
         </>
     )

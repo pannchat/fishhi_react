@@ -6,12 +6,14 @@ const CalcSupplies = ({capacity, tankWeight}) =>{
     const [toggle, setToggle] = useState(false);
     useEffect(()=>{
 
-        // axios.get('https://fishhi.kr/supplies_product.json')
-        // .then((data) =>{
-        //     setSuppList(data.data.item);
+        fetch('http://15.165.122.253/misskim3/login/login.php')
+        .then((data) =>{
+            // setSuppList(data.data.item);
 
+            console.log(data)
 
-        // });
+        })
+        // .catch(error => console.error('Error:', error));;
 
     },[])
 

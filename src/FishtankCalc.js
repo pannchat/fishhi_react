@@ -195,6 +195,7 @@ const FishtankCalc = () => {
                 <div id="url"></div>
                 <ul className="flex-box" id="search-container">
                 <CalcSupplies capacity={inputs.capacity} tankWeight={inputs.tankWeight} />
+
             </ul>
             </div>
 
